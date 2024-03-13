@@ -86,13 +86,12 @@ const galleryItemsMarkup = images.reduce((acc, element) => {
 
 galleryContainer.insertAdjacentHTML("afterbegin", galleryItemsMarkup);
 
-galleryContainer.addEventListener("click", onImageClick);
-
-function onImageClick(event) {
-  event.preventDefault();
-  if (event.target.nodeName !== "IMG") {
-    return;
-  }
-
-  
+const simplelightboxOptions = {
+  captionsData: 'alt',
+  captionDelay: 250,
 }
+
+let gallery = new SimpleLightbox('.gallery a', simplelightboxOptions);
+gallery.on('show.simplelightbox');
+
+
